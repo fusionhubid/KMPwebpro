@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  /* Membuat animasi marquee untuk efek teks berjalan */
+  --animate-marquee: marquee 25s linear infinite;
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+}
+
+/* Latar belakang cerah agar sesuai tema korporat HRO */
+body {
+  background-color: #f8fafc;
+}
