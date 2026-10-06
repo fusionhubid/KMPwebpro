@@ -63,7 +63,8 @@ const services = [
     id: 7,
     title: "IT Solution By Fusion Hub",
     description: "Our partner who can solve any of your IT problems. Example: IT inventory, asset management, etc.",
-    icon: <Monitor size={28} className="text-amber-500" />
+    icon: <Monitor size={28} className="text-amber-500" />,
+    link: "https://fusionhub.id/"
   }
 ];
 
@@ -295,6 +296,7 @@ export default function App() {
           {services.map((service, index) => (
             <motion.div 
               key={service.id}
+              onClick={() => service.link ? window.open(service.link, '_blank') : null}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
@@ -303,7 +305,7 @@ export default function App() {
                 visible: { opacity: 1, y: 0, transition: { delay: (index % 3) * 0.15, duration: 0.6, ease: "easeOut" } }
               }}
               whileHover={{ y: -5 }}
-              className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 group hover:border-amber-300"
+              className={`bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 group hover:border-amber-300 ${service.link ? 'cursor-pointer' : ''}`}
             >
               <div className="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber-500 transition-colors duration-300 shadow-md">
                 {React.cloneElement(service.icon, { className: "text-amber-500 group-hover:text-blue-900 transition-colors" })}
